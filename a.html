@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☠️</title>
+    <style>
+        /* Genel Stil Ayarları */
+        #hacked-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9); /* Şeffaf siyah arka plan */
+            z-index: 9998; /* Kanvasın bir altında olacak */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00;
+            overflow: hidden;
+        }
+
+        /* Küçük Arka Plan Görüntüsü */
+        .background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px; /* Görüntünün genişliğini ayarla */
+            height: 600px; /* Görüntünün yüksekliğini ayarla */
+            background-image: url(''); /* Görüntü URL'si */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: translate(-50%, -50%); /* Görüntüyü ortalar */
+            opacity: 0.2; /* Şeffaflık değeri */
+            z-index: 0;
+        }   
+
+        /* Binary Efekti için Overlay */
+        .binary-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            color: rgba(0, 255, 0, 0.1);
+            text-align: center;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .binary-overlay::after {
+            content: '010101101010100101010111010101010101010111010101010101010';
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-45deg);
+            white-space: pre;
+            animation: scroll 10s linear infinite;
+        }
+
+        /* Merkezdeki İçerik */
+        .content {
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* H1 için Parlama ve Yanıp Sönme Efekti */
+        .content h1 {
+            font-size: 3rem;
+            color: #00f9ff;
+            text-shadow: 0 0 8px #00f9ff, 0 0 20px #00f9ff, 0 0 30px #00f9ff;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        /* Yanıp Sönme Animasyonu */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Alt Metin için Stil */
+        .content p {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #ff0000;
+        }
+
+        /* Binary Efektinin Kayması */
+        @keyframes scroll {
+            0% { top: 0; }
+            100% { top: -100%; }
+        }
+
+        /* Kanvas Arka Plan Efekti */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999; /* Kanvası en öne alıyoruz */
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hacked Overlay -->
+    <div id="hacked-overlay">
+        <!-- Küçük Arka Plan Görüntüsü -->
+        <div class="background"></div>
+
+        <!-- Binary Efekti için Overlay -->
+        <div class="binary-overlay"></div>  
+
+        <!-- İçerik -->
+        <div class="content">
+            <h1>☠️ HACKED BY L30N10FF1C14L$ ☠️</h1>
+            <p>We Are Shadows in the Code, Unseen but Everywhere.</p><br>
+
+            <p>By <u><a href="https://www.instagram.com/leoniofficials/" style="color: white;">leoniofficials</a></u>
+        
+        </p>
+        </div>
+    </div>
+
+    <!-- JavaScript Kodu -->
+    <script >
+        // Sağ Tıklamayı Engelle
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+   
+        const titles = [" ☠️  Hacked by L30N10FF1C14L$ ☠️ ", "☠️ $ ☠️ "];
+        let titleIndex = 0;
+
+        setInterval(() => {
+            document.title = titles[titleIndex];
+            titleIndex = (titleIndex + 1) % titles.length;
+        }, 2000);
+
+        // Kanvas Ekle ve Arka Plan Yıldız Efekti
+        const canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+
+        // Yıldızların konum, boyut ve hızlarını tutan dizi
+        const stars = Array.from({ length: 150 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            speed: Math.random() * 0.5 + 0.2
+        }));
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+                ctx.fill();
+                star.y += star.speed;
+
+                if (star.y > canvas.height) {
+                    star.y = 0;
+                    star.x = Math.random() * canvas.width;
+                }
+            });
+        }
+
+        setInterval(drawStars, 30);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drawStars();
+        });
+    </script>
+</body>
+</html>
